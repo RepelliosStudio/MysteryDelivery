@@ -848,7 +848,7 @@
         .contact-container {
             max-width: 900px;
             width: 100%;
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(205, 127, 50, 0.08));
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
             border: 2px solid rgba(212, 175, 119, 0.3);
             border-radius: 12px;
             padding: 3rem;
@@ -856,8 +856,14 @@
             position: relative;
             overflow: hidden;
             margin:0 auto;
+            border-style: solid;
+            border-width: 40px;
+            border-image-source: url(img/border3.png);
+            border-image-slice: 100 100 100 100 fill;
+            border-image-repeat: stretch;
         }
 
+/*
         .contact-container::before {
             content: '';
             position: absolute;
@@ -867,7 +873,7 @@
             height: 4px;
             background: linear-gradient(to right, transparent, #cd7f32, transparent);
         }
-
+*/
         .contact-header {
             text-align: center;
             margin-bottom: 3rem;
