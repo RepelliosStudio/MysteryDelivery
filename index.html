@@ -1250,14 +1250,14 @@
           .hero-slider{margin-top:0px;}
           .slider-arrow{display:none;}
           .section-title {
-            width:325px;
-            height:133px;
+            width:310px;
+            height:127px;
             background-size: 100% 100%;
             margin-bottom:3rem;
           }
           .section-title span {
-            font-size:13px;
-            height:133px;
+            font-size:12px;
+            height:127px;
 
           }
           .combat-section{padding:0}
@@ -1281,8 +1281,15 @@
             font-size:14px;
           }
 
+          .studio-image-holder{
+            padding-top: 15px;
+            padding-bottom: 30px;
+            padding-left: 75px;
+            padding-right: 75px;
+          }
+
           .studio-image-holder img{
-            width:200px;
+            width:150px;
             }
         }
 
@@ -1299,7 +1306,6 @@
                 width: 100%;
                 z-index: 1000;
                 padding: 10px 0;
-                backdrop-filter: blur(10px);
             }
 
             #nav-mobile .container {
@@ -2003,13 +2009,23 @@ heroSlider.addEventListener('mouseleave', () => {
         });
 
         /* nav scrolled */
-        const navbar = document.querySelector('nav');
+        const navbardesktop = document.querySelector('#nav-desktop');
 
         window.addEventListener('scroll', () => {
           if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+            navbardesktop.classList.add('scrolled');
           } else {
-            navbar.classList.remove('scrolled');
+            navbardesktop.classList.remove('scrolled');
+          }
+        });
+
+        const navbarmobile = document.querySelector('#nav-mobile');
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbarmobile.classList.add('scrolled');
+          } else {
+            navbarmobile.classList.remove('scrolled');
           }
         });
 
