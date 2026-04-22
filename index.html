@@ -17,11 +17,18 @@
             font-family: "MedievalSharp", cursive;
         }
 
-        html{scroll-behavior: smooth;}
+        #nav-mobile .hamburger-open,
+        #nav-mobile .close-menu,
+        #nav-mobile a,
+        button {
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html{scroll-behavior: smooth;background: black;}
 
         body {
             font-family: "MedievalSharp", cursive;
-            background: #0a0604;
             background: url(img/bg2.png) center;
             
             color: #d4af77;
@@ -395,6 +402,25 @@
             width: 100px;
             height: 2px;
             background: linear-gradient(to right, transparent, #cd7f32, transparent);
+        }
+
+        #about{
+            text-align: center;
+        }
+
+        .studio-image-holder{
+            display:inline-block;
+            background:url('img/parsomen.png');
+            background-size:100% 100%; 
+            border-radius:25px;
+            padding-top: 25px;
+            padding-bottom: 50px;
+            padding-left: 75px;
+            padding-right: 75px;
+        }
+
+        .studio-image-holder img{
+            width:300px;
         }
 
         /* Characters */
@@ -1254,6 +1280,10 @@
           .form-group select {
             font-size:14px;
           }
+
+          .studio-image-holder img{
+            width:200px;
+            }
         }
 
         @media (max-width: 767px) {
@@ -1315,11 +1345,13 @@
                 display: none;
                 flex-direction: column;
                 align-items: center;
-                padding-top: 80px;
+                padding-top: 45px;
                 transition: right 0.4s ease, visibility 0.4s;
                 z-index: 1001;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.5);
             }
+
+            #nav-mobile .header-content .header-button{margin-right: 0;}
 
             /* Menü Aktifken */
             #nav-mobile .header-content.active {
@@ -1444,9 +1476,9 @@
                 </ul>
                 <div class="social-links">
                     <div class="social-icon"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></div>
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-patreon"></i></a></div>
                     <div class="social-icon"><a href="#"><i class="fa-brands fa-itch-io"></i></a></div>
                 </div>
+                <div class="header-button header-button-patreon"><button class="btn-demo"><i class="fa-brands fa-patreon"></i> Patreon</button></div>
                 <div class="header-button"><button class="btn-demo">Play Demo</button></div>
                 </div>
             </div>
@@ -1492,7 +1524,12 @@
         </div>
     </div>
 
+
     <!-- Characters Section -->
+    <section id="about">
+        <h2 class="section-title"><span>REPELLIOS STUDIO</span></h2>
+        <div class="studio-image-holder"><img src="img/studiologo.png"></div>
+    </section>
     <section id="characters">
         <h2 class="section-title"><span>MEET THE CHARACTERS</span></h2>
         <div class="characters-grid">
