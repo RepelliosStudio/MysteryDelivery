@@ -1207,6 +1207,7 @@
             #nav-desktop{position:relative;}
             .hero-slider{margin-top:-203px;}
             #nav-desktop .container{flex-direction: column;}
+            .header-links{margin-top:10px;margin-bottom:10px;}
             
 
         }
@@ -1247,6 +1248,12 @@
           .gallery-grid{grid-template-columns: none;}
           .character-desc{font-size:14px;}
           .character-name{font-size:18px;}
+
+          .form-group input,
+          .form-group textarea,
+          .form-group select {
+            font-size:14px;
+          }
         }
 
         @media (max-width: 767px) {
@@ -2028,7 +2035,7 @@ heroSlider.addEventListener('mouseleave', () => {
         const inputs = document.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'translateX(5px)';
+                this.parentElement.style.transform = 'translateX(0px)';
             });
 
             input.addEventListener('blur', function() {
