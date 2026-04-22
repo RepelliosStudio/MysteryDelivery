@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <title>Medieval Visual Novel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "MedievalSharp", cursive;
+        }
+
+        html{scroll-behavior: smooth;}
+
+        body {
+            font-family: "MedievalSharp", cursive;
+            background: #0a0604;
+            background: url(img/bg2.png) center;
+            
+            color: #d4af77;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /*
+            background: linear-gradient(to bottom, rgba(10, 6, 4, 0.98), rgba(10, 6, 4, 0.85));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 119, 0.2);
+            */
+            z-index: 1000;
+            padding: 1rem 2rem;
+            
+        }
+
+        nav.scrolled{
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 119, 0.2);
+        }
+
+        nav .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav#nav-mobile{display:none}
+
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #d4af77;
+        }
+
+        .header-logo{
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-links{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav-desktop .header-right{
+            display: flex;
+        }
+
+        #nav-desktop .social-links{
+            background:url("img/button/button1.png");
+            background-size:100% 100%;
+            padding:5px;
+            display: flex;
+            margin-top:0;
+            gap:0;
+            margin-left:0.75rem;
+            border-radius:15px;
+        }
+
+        .header-button{
+           
+        }
+
+        .logo small {
+            display: block;
+            font-size: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.75rem;
+            list-style: none;
+        }
+
+        .nav-links li{
+            width:125px;
+            text-align: center;
+            background-size:100% 100% !important;
+            background-repeat:no-repeat !important;
+            padding:10px;
+        }
+
+        .nav-links li:nth-of-type(1){
+            background: url(img/button/button1.png);
+            
+        }
+
+        .nav-links li:nth-of-type(2){
+            background: url(img/button/button2.png);
+        }
+
+        .nav-links li:nth-of-type(3){
+            background: url(img/button/button3.png);
+        }
+
+        .nav-links li:nth-of-type(4){
+           background: url(img/button/button4.png);
+        }
+
+        .nav-links li:nth-of-type(5){
+            background: url(img/button/button5.png);
+        }
+
+        .nav-links li:nth-of-type(6){
+            background: url(img/button/button6.png);
+        }
+
+        .nav-links a {
+            color: #c3c0c2;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff8c42;
+        }
+        /*
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #ff8c42;
+            transition: width 0.3s;
+        }
+        */
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #8b4513, #cd7f32);
+            background: url(img/nameplate.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 1rem 1.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+            font-size:18px;
+            letter-spacing: 1px;
+        }
+
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(205, 127, 50, 0.5);
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            /*margin-top: 70px;*/
+            height: 100vh;
+            min-height:500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            height: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            -webkit-user-drag: none;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /*background: linear-gradient(to bottom, rgba(10, 6, 4, 0.3), rgba(10, 6, 4, 0.1));*/
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-title {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slide-subtitle::before,
+        .slide-subtitle::after {
+            content: '❖';
+            color: #cd7f32;
+        }
+
+        .slide-description {
+            font-size: 20px;
+            letter-spacing:1px;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(212, 175, 119, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #d4af77;
+        }
+
+        .slider-dot.active {
+            background: #d4af77;
+            transform: scale(1.3);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 175, 119, 0.2);
+            border: 1px solid #d4af77;
+            color: #d4af77;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 20;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(212, 175, 119, 0.4);
+        }
+
+        .slider-arrow.left {
+            left: 20px;
+        }
+
+        .slider-arrow.right {
+            right: 20px;
+        }
+
+        /* Section Container */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 7.5rem 2rem;
+            padding-bottom:0px;
+        }
+
+        .section-title {
+            background: url(img/title.png) center;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            height: 250px;
+            width:600px;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
+            position: relative;
+            display:flex;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+        }
+
+        .section-title span{
+            height:250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222222;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cd7f32, transparent);
+        }
+
+        /* Characters */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 424px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .character-card {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
+            /*border: 2px solid rgba(212, 175, 119, 0.3);*/
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 1;
+            transition: opacity 0.4s;
+            background: url(img/border5.png);
+            background-size:100% 100%;
+        }
+
+        .character-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            border-color: #cd7f32;
+            box-shadow: 0 10px 40px rgba(205, 127, 50, 0.3);
+        }
+
+        .character-card:hover::before {
+            opacity: 1;
+        }
+
+        .character-image {
+            width: 100%;
+            height: 440px;
+            background: linear-gradient(135deg, #2c1810, #1a0f0a);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 1px solid rgba(212, 175, 119, 0.2);
+            padding-top:24px;
+        }
+
+        .character-name {
+            background:url("img/nameplate.png") center;
+            background-size:50% 100%;
+            background-repeat:no-repeat;
+            padding:10px;
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .character-desc {
+            background:url("img/parsomen.png") center;
+            background-size:100% 100%;
+            background-repeat:no-repeat;
+            padding:10px;
+            font-size: 18px;
+            color: white;
+            line-height: 1.5;
+            letter-spacing: 1px;
+        }
+
+        /* Combat Section */
+        .combat-section {
+            /*
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(205, 127, 50, 0.02));
+            */
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .combat-info{
+            padding-left:30px;
+            background:url("img/parsomen.png");
+            background-size:100% 75%;
+            background-repeat:no-repeat;
+        }
+
+        .combat-info h3 {
+            background:url("img/nameplate.png");
+            background-size:100% 100%;
+            padding:10px;
+            background-repeat:no-repeat;
+            font-size: 22px;
+            margin-top:-65px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            color:white;
+            display: inline-block;
+        }
+
+        .combat-info p {
+            line-height: 1.5;
+            color: white;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+            font-size:18px;
+        }
+
+        .combat-preview {
+            /*
+            background: linear-gradient(135deg, #2c1810, #1a0f0a);
+            border: 2px solid rgba(212, 175, 119, 0.3);
+            border-radius: 8px;
+            */
+            /*padding: 2rem;*/
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-style: solid;
+            border-width: 40px;
+            border-image-source: url('img/border3.png'); 
+            border-image-slice: 100 100 100 100 fill; 
+            border-image-repeat: stretch;
+        }
+
+        .combat-demo {
+            width: 100%;
+            text-align: center;
+            color: #d4af77;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.1);
+        }
+
+        .skill-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(205, 127, 50, 0.1));
+            border: 3px solid rgba(212, 175, 119, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s;
+            padding:15px;
+        }
+
+        .skill-item:hover .skill-icon {
+            border-color: #cd7f32;
+            box-shadow: 0 0 30px rgba(205, 127, 50, 0.5);
+        }
+
+        .skill-name {
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-desc {
+            font-size: 18px;
+            color: #a89776;
+            letter-spacing:1px;
+        }
+
+        /* Story Choices */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .story-text {
+            background: rgba(139, 69, 19, 0.1);
+            background: url(img/parsomen.png) center;
+            background-size:100% 50%;
+            /*border: 2px solid rgba(212, 175, 119, 0.3);*/
+            border-radius: 8px;
+            padding: 3rem;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-repeat: no-repeat;
+        }
+
+        .story-text h3 {
+            background: url("img/nameplate.png");
+            background-size:55% 100%;
+            background-repeat: no-repeat;
+            padding:10px;
+            font-size: 22px;
+            margin-top:-60px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            color:white;
+        }
+
+        .story-text p {
+            line-height: 1.5;
+            color: white;
+            font-size:18px;
+            letter-spacing: 1px;
+        }
+
+        .choices-panel {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
+            background: url("img/selectbg.png");
+            background-size: 100% 100%;
+            /*border: 2px solid rgba(212, 175, 119, 0.3);*/
+            border-radius: 8px;
+            padding-left: 5rem;
+            padding-right: 5rem;
+            padding-bottom: 1.5rem;
+            padding-top: 1.5rem;
+        }
+
+        .choices-panel h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .choice-option {
+            background: rgba(139, 69, 19, 0.2);
+            background: url(img/select.png);
+            background-size:100% 100%;
+            /*border: 1px solid rgba(212, 175, 119, 0.3);*/
+            border-radius: 4px;
+            padding: 2.3rem 3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .choice-option span{
+            color:white;
+            font-size:22px;
+        }
+
+        .choice-option:hover {
+            background: url(img/afterselect.png);
+            background-size:100% 100%;
+            /*background: rgba(205, 127, 50, 0.2);*/
+            /*border-color: #cd7f32;*/
+            /*transform: translateX(10px);*/
+        }
+
+        .choice-icon {
+            color: #cd7f32;
+        }
+
+        .consequence {
+            font-size: 18px;
+            color: #a89776;
+            font-style: italic;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            /*height: 250px;*/
+            background: linear-gradient(135deg, #2c1810, #1a0f0a);
+            border: 2px solid rgba(212, 175, 119, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            display: flex;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 6, 4, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #cd7f32;
+            box-shadow: 0 10px 40px rgba(205, 127, 50, 0.4);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            margin-top:2rem;            
+            background: linear-gradient(to bottom, rgba(10, 6, 4, 0.5), rgba(10, 6, 4, 0.9));
+            border-top: 1px solid rgba(212, 175, 119, 0.2);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            /*grid-template-columns: 2fr 1fr 1fr 1fr;*/
+            gap: 3rem;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #a89776;
+            line-height: 1.6;
+        }
+
+        .footer-links-social{
+            margin:0 auto;
+            text-align:center;
+        }
+
+        .footer-links-social h3{font-size:24px;}
+
+        .footer-links-social p{margin-top:10px;font-size:18px;}
+
+        .footer-links h3 {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #a89776;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #cd7f32;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(212, 175, 119, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af77;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social-icon a{text-decoration: none; color:inherit;}
+
+        .social-icon:hover {
+            background: rgba(205, 127, 50, 0.2);
+            border-color: #cd7f32;
+            transform: translateY(-3px);
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(139, 69, 19, 0.2);
+            border: 1px solid rgba(212, 175, 119, 0.3);
+            border-radius: 4px;
+            color: #d4af77;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter button {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 119, 0.2);
+            color: #a89776;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .slide-title {
+                font-size: 2.5rem;
+            }
+            
+            .combat-section,
+            .story-section,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(205, 127, 50, 0.08));
+            border: 2px solid rgba(212, 175, 119, 0.3);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            margin:0 auto;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #cd7f32, transparent);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-title::before,
+        .contact-title::after {
+            content: '❖';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #cd7f32;
+            font-size: 1.5rem;
+        }
+
+        .contact-title::before {
+            left: -40px;
+        }
+
+        .contact-title::after {
+            right: -40px;
+        }
+
+        .contact-subtitle {
+            color: #a89776;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cd7f32, transparent);
+            margin: 1.5rem auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(139, 69, 19, 0.1);
+            border: 1px solid rgba(212, 175, 119, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .info-item:hover {
+            background: rgba(205, 127, 50, 0.15);
+            border-color: #cd7f32;
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(205, 127, 50, 0.2));
+            border: 2px solid rgba(212, 175, 119, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-details h3 {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-details p {
+            color: #a89776;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #d4af77;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .required {
+            color: #cd7f32;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            background: rgba(139, 69, 19, 0.2);
+            border: 1px solid rgba(212, 175, 119, 0.3);
+            border-radius: 6px;
+            color: #d4af77;
+            font-family: inherit;
+            font-size: 20px;
+            transition: all 0.3s;
+            letter-spacing:1px;
+            font-weight:bold;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #cd7f32;
+            background: rgba(205, 127, 50, 0.15);
+            box-shadow: 0 0 0 3px rgba(205, 127, 50, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(168, 151, 118, 0.5);
+        }
+
+        .form-group option{color:black;}
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #8b4513, #cd7f32);
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(205, 127, 50, 0.5);
+        }
+
+        .submit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.2), rgba(50, 205, 50, 0.1));
+            border: 1px solid rgba(50, 205, 50, 0.4);
+            color: #90ee90;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            /*
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 119, 0.2);
+            */
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid rgba(212, 175, 119, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af77;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: rgba(205, 127, 50, 0.2);
+            border-color: #cd7f32;
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(205, 127, 50, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .contact-title::before,
+            .contact-title::after {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(139, 69, 19, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8b4513, #cd7f32);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #cd7f32, #8b4513);
+        }
+
+        @media only screen and (max-width: 1457px) {
+            #nav-desktop{position:relative;}
+            .hero-slider{margin-top:-203px;}
+            #nav-desktop .container{flex-direction: column;}
+            
+
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .story-section{grid-template-columns: none; }
+            .story-text{background-size: 100% 100%;}
+            .story-text h3{background-size:50% 100%;}
+        }
+
+        @media only screen and (max-width: 767px) {
+          section{padding:2rem 2rem;}
+          nav{position: relative;}
+          .hero-slider{margin-top:0px;}
+          .slider-arrow{display:none;}
+          .section-title {
+            width:325px;
+            height:133px;
+            background-size: 100% 100%;
+            margin-bottom:3rem;
+          }
+          .section-title span {
+            font-size:13px;
+            height:133px;
+
+          }
+          .combat-section{padding:0}
+          .combat-section .btn-demo{margin-left:-30px;}
+          .combat-info {text-align:center;}
+          .combat-info h3{font-size:18px;margin-left:-30px;text-align:left; background-size: 100% 100%;}
+          .combat-info p{font-size:14px;text-align:left;}
+          .skills-grid{grid-template-columns: none;}
+          .story-text{padding:2rem ;background-size: 100% 100%;}
+          .story-text h3{margin-top:-40px;background-size: 100% 100%;}
+          .story-text p{font-size:14px;}
+          .choices-panel{padding-left: 1.5rem;padding-right: 1.5rem;padding-bottom: 1rem;padding-top: 1rem;}
+          .choice-option{padding:1.5rem 1.5rem}
+          .gallery-grid{grid-template-columns: none;}
+          .character-desc{font-size:14px;}
+          .character-name{font-size:18px;}
+        }
+
+        @media (max-width: 767px) {
+            #nav-desktop {
+                display: none !important;
+            }
+
+            #nav-mobile {
+                display: block !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                padding: 10px 0;
+                backdrop-filter: blur(10px);
+            }
+
+            #nav-mobile .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+
+            }
+
+            #nav-mobile .header-logo{width:75%; justify-content: flex-start;}
+
+            #nav-mobile .header-logo img {
+                width: 275px; /* Mobilde logoyu küçülttük */
+            }
+
+            /* Hamburger Açma Butonu */
+            #nav-mobile .hamburger-open {
+                display:flex;
+                width:25%;
+                justify-content: flex-end;
+                color: black;
+                font-size: 1.8rem;
+                cursor: pointer;
+            }
+
+            #nav-mobile .hamburger-open i{
+                color:#d4af77;
+                background: url(img/button/button1.png);
+                background-size: 100% 100%;
+                padding: 12px;
+            }
+
+            /* Yan Panel (Header Content) */
+            #nav-mobile .header-content {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Başlangıçta ekran dışında */
+                width: 280px;
+                height: 100vh;
+                background: #1a120b url(img/bg2.png); /* Temaya uygun arka plan */
+                border-left: 2px solid #d4af77;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 80px;
+                transition: right 0.4s ease, visibility 0.4s;
+                z-index: 1001;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+
+            /* Menü Aktifken */
+            #nav-mobile .header-content.active {
+                display:flex;
+                right: 0;
+            }
+
+            /* Kapatma Butonu */
+            #nav-mobile .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: #d4af77;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+
+            #nav-mobile .header-links{
+                width:100%;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            /* Menü Linkleri */
+            #nav-mobile .nav-links {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                gap: 25px;
+                text-align: center;
+                padding: 0;
+            }
+            #nav-mobile .nav-links li{width:160px;}
+
+            #nav-mobile .nav-links li a {
+                text-decoration: none;
+                font-size: 1.3rem;
+                text-transform: uppercase;
+                display: block;
+                transition: 0.3s;
+            }
+
+            #nav-mobile .nav-links li a:hover {
+                color: #fff;
+                text-shadow: 0 0 8px #d4af77;
+            }
+
+            #nav-mobile .header-content .social-links {
+                margin-top: 20px;
+            }
+
+            /* Menü içindeki Play Demo butonu */
+            #nav-mobile .header-content .header-button {
+                width:160px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav-desktop">
+        <div class="container">
+            <div class="logo header-logo">
+                <!--
+                MEDIEVAL
+                <small>★ VISUAL NOVEL ★</small>
+                -->
+                <img src="img/gamelogo.png" width="350px">
+            </div>
+
+            <div class="header-links">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#characters">Characters</a></li>
+                <li><a href="#combat">Combat</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+            <div class="social-links">
+                        <div class="social-icon"><a href="#"><i class="fa-brands fa-patreon"></i></a></div>
+                </div>
+            </div>
+            <div class="header-right">
+                
+                <div class="header-button"><button class="btn-demo">Play Demo</button></div>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile">
+        <div class="container">
+            <div class="logo header-logo">
+                <!--
+                MEDIEVAL
+                <small>★ VISUAL NOVEL ★</small>
+                -->
+                <img src="img/gamelogo.png" width="350px">
+            </div>
+
+            <div class="hamburger-open" id="hamburger-open">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+               <div class="header-content" id="mobile-nav">
+                <div class="close-menu" id="hamburger-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+
+                <div class="header-links">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#characters">Characters</a></li>
+                    <li><a href="#combat">Combat</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#story">Story</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+                <div class="social-links">
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></div>
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-patreon"></i></a></div>
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-itch-io"></i></a></div>
+                </div>
+                <div class="header-button"><button class="btn-demo">Play Demo</button></div>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Slider -->
+    <div class="hero-slider" id="home">
+        <div class="slider-container">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/forkroad.png');">
+                <div class="slide-content">
+                    <h1 class="slide-title">Welcome</h1>
+                    <div class="slide-subtitle">JOIN OUR JOURNEY</div>
+                    <p class="slide-description">Embark on a medieval fantasy journey filled with intrigue and adventure.</p>
+                    <button class="btn-demo">Play Demo</button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/tavern.png');">
+                <div class="slide-content">
+                    <h1 class="slide-title">Your Choices</h1>
+                    <div class="slide-subtitle">SHAPE YOUR DESTINY</div>
+                    <p class="slide-description">Every decision matters. Shape the world through your choices.</p>
+                    <button class="btn-demo">Start Journey</button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/cave.png');">
+                <div class="slide-content">
+                    <h1 class="slide-title">Turn Based Combats</h1>
+                    <div class="slide-subtitle">STRATEGIC COMBAT</div>
+                    <p class="slide-description">Master turn-based combat with elemental skills and tactical gameplay.</p>
+                    <button class="btn-demo" onclick="window.location.href='#skills'">Learn More</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="slider-arrow left">‹</div>
+        <div class="slider-arrow right">›</div>
+        <div class="slider-controls">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+
+    <!-- Characters Section -->
+    <section id="characters">
+        <h2 class="section-title"><span>MEET THE CHARACTERS</span></h2>
+        <div class="characters-grid">
+            <div class="character-card">
+                <div class="character-image"><img src="img/courier_neutral.png" width="100%"></div>
+                <h3 class="character-name">COURIER</h3>
+                <p class="character-desc">Skilled courier with a mysterious past.</p>
+            </div>
+        </div>
+        <div class="characters-grid">
+            <div class="character-card">
+                <div class="character-image"><img src="img/ashaka_blush.png" width="100%"></div>
+                <h3 class="character-name">ASHAKA</h3>
+                <p class="character-desc">An apprentice of a healer with a charming heart</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/ghorza_angry_reverse.png" width="100%"></div>
+                <h3 class="character-name">GHORZA</h3>
+                <p class="character-desc">A strong and loyal chief guard, seeking justice.</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/shaman_neutral.png" width="100%"></div>
+                <h3 class="character-name">SHAMAN</h3>
+                <p class="character-desc">A shadowy figure wielding powerful magic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combat Section -->
+    <section id="combat">
+        <h2 class="section-title"><span>ENGAGE IN INTENSE COMBAT</span></h2>
+        <div class="combat-section">
+            <div class="combat-info">
+                <h3>Turn-Based Strategy</h3>
+                <p>Battle sinister creatures in turn-based combat. Use your strategy and elemental skills to turn the tide of battle.</p>
+                <button class="btn-demo">Learn More</button>
+            </div>
+            <div class="combat-preview">
+                <div class="combat-demo">
+                    <img src="img/combat.jpeg" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title"><span>MASTER ELEMENTAL SKILLS</span></h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,69,0,0.3), transparent);"><img src="img/fire.png" width="100%"></div>
+                <h4 class="skill-name">FIRE</h4>
+                <p class="skill-desc">Scorch your enemies with devastating flames.</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);"><img src="img/wind.png" width="100%"></div>
+                <h4 class="skill-name">AIR</h4>
+                <p class="skill-desc">Control the wind and strike swiftly.</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);"><img src="img/lightning.png" width="100%"></div>
+                <h4 class="skill-name">LIGHTNING</h4>
+                <p class="skill-desc">Call down lightning to shock and stun.</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(0,191,255,0.3), transparent);"><img src="img/water.png" width="100%"></div>
+                <h4 class="skill-name">WATER</h4>
+                <p class="skill-desc">Heal allies and wash away foes.</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(139,69,19,0.3), transparent);"><img src="img/rock.png" width="100%"></div>
+                <h4 class="skill-name">ROCK</h4>
+                <p class="skill-desc">Fortify your defense and crush your foes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story">
+        <h2 class="section-title"><span>YOUR STORY, YOUR CHOICES</span></h2>
+        <div class="story-section">
+            <div class="story-text">
+                <h3>THE JOURNEY BEGINS...</h3>
+                <p>You awaken in a forest, wounded and alone. Memories of the past are hazy, and the road ahead is uncertain. As you venture forth, you will encounter allies, enemies, and dilemmas that will shape your fate.</p>
+            </div>
+            <div class="choices-panel">
+                <h3></h3>
+                <div class="choice-option">
+                    <span class="choice-icon"></span>
+                    <span>Accept their help.</span>
+                </div>
+                <div class="choice-option">
+                    <span class="choice-icon"></span>
+                    <span>Question their intentions.</span>
+                </div>
+                <div class="choice-option">
+                    <span class="choice-icon"></span>
+                    <span>Decline and continue alone.</span>
+                </div>
+                <p class="consequence">Every choice has a consequence. Every path leads to a different destiny.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title"><span>GALLERY</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="img/cave.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/forkroad.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/shamanhouse.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/tavern.png" width="100%"></div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <!--<button class="btn-demo">View More</button>-->
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title"><span>CONTACT US</span></h2>
+        <div class="contact-container">
+        <div class="contact-header">
+            <!--
+            <h1 class="contact-title">CONTACT US</h1>
+            <div class="divider"></div>
+            -->
+            <p class="contact-subtitle">We'd love to hear from you</p>
+        </div>
+
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm">
+                <div class="success-message" id="successMessage">
+                    ✓ Your message has been sent successfully! We'll respond soon.
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>
+                            First Name <span class="required">*</span>
+                        </label>
+                        <input type="text" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Last Name <span class="required">*</span>
+                        </label>
+                        <input type="text" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Email Address <span class="required">*</span>
+                    </label>
+                    <input type="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Subject <span class="required">*</span>
+                    </label>
+                    <select name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Message <span class="required">*</span>
+                    </label>
+                    <textarea name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>SEND MESSAGE</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links-social">
+                <h3>JOIN THE COMMUNITY</h3>
+                <p>Stay updated with the latest news and updates</p>
+                <div class="social-links">
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></div>
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-patreon"></i></a></div>
+                    <div class="social-icon"><a href="#"><i class="fa-brands fa-itch-io"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Repellios Studio All rights reserved. | <a href="#" style="color: #a89776;">Privacy Policy</a> | <a href="#" style="color: #a89776;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    
+    <!--
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Medieval<br><small style="font-size: 0.6rem; letter-spacing: 2px;">★ VISUAL NOVEL ★</small></h2>
+                <p>A story-driven medieval visual novel where your choices shape the world around you.</p>
+            </div>
+            <div class="footer-links">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#characters">Characters</a></li>
+                    <li><a href="#combat">Combat</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>STAY CONNECTED</h3>
+                <div class="social-links">
+                    <div class="social-icon">𝕏</div>
+                    <div class="social-icon">f</div>
+                    <div class="social-icon">📷</div>
+                    <div class="social-icon">▶</div>
+                </div>
+            </div>
+            <div class="newsletter">
+                <h3>NEWSLETTER</h3>
+                <p style="color: #a89776; margin-bottom: 1rem; font-size: 0.9rem;">Subscribe for the latest updates.</p>
+                <input type="email" placeholder="Your email address">
+                <button class="btn-demo">Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Medieval Visual Novel. All rights reserved. | <a href="#" style="color: #a89776;">Privacy Policy</a> | <a href="#" style="color: #a89776;">Terms of Service</a></p>
+        </div>
+    </footer>
+    -->
+
+    <script>
+// Slider functionality
+const sliderContainer = document.querySelector('.slider-container');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slider-dot');
+const leftArrow = document.querySelector('.slider-arrow.left');
+const rightArrow = document.querySelector('.slider-arrow.right');
+const heroSlider = document.querySelector('.hero-slider');
+
+let currentSlide = 0;
+const totalSlides = slides.length;
+let isTransitioning = false; // Çift tetiklemeyi önlemek için kilit
+
+// Sonsuz slider için klon slide'lar oluştur
+function createInfiniteSlider() {
+    const firstClone = slides[0].cloneNode(true);
+    firstClone.classList.add('clone');
+    sliderContainer.appendChild(firstClone);
+    
+    const lastClone = slides[totalSlides - 1].cloneNode(true);
+    lastClone.classList.add('clone');
+    sliderContainer.insertBefore(lastClone, slides[0]);
+    
+    currentSlide = 1;
+    sliderContainer.style.transition = 'none';
+    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    dots[0].classList.add('active');
+}
+
+createInfiniteSlider();
+
+function updateSlider(withTransition = true) {
+    if (withTransition) {
+        isTransitioning = true;
+        sliderContainer.style.transition = 'transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)';
+    } else {
+        sliderContainer.style.transition = 'none';
+    }
+    
+    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Dot güncelleme mantığı
+    const actualSlide = currentSlide === 0 ? totalSlides - 1 : 
+                        currentSlide === totalSlides + 1 ? 0 : 
+                        currentSlide - 1;
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === actualSlide);
+    });
+
+    // Geçiş bittiğinde kilidi aç (0.8s = 800ms)
+    if (withTransition) {
+        
+        setTimeout(() => {
+            isTransitioning = false;
+            checkBoundary();
+        }, 500);
+
+    }
+}
+
+// Sınırları kontrol edip klonlardan gerçek slide'lara atlayan yardımcı fonksiyon
+function checkBoundary() {
+    if (currentSlide === totalSlides + 1) {
+        currentSlide = 1;
+        updateSlider(false);
+    } else if (currentSlide === 0) {
+        currentSlide = totalSlides;
+        updateSlider(false);
+    }
+}
+
+function nextSlide() {
+    if (isTransitioning) return;
+    currentSlide++;
+    updateSlider(true);
+}
+
+function prevSlide() {
+    if (isTransitioning) return;
+    currentSlide--;
+    updateSlider(true);
+}
+
+// Auto-advance
+let autoSlide = setInterval(nextSlide, 5000);
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextSlide, 5000);
+}
+
+// Event Listeners
+rightArrow.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+leftArrow.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+});
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        if (isTransitioning) return;
+        currentSlide = index + 1;
+        updateSlider(true);
+        resetAutoSlide();
+    });
+});
+
+// Draggable Logic
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+
+sliderContainer.addEventListener('mousedown', dragStart);
+sliderContainer.addEventListener('touchstart', dragStart);
+sliderContainer.addEventListener('mouseup', dragEnd);
+sliderContainer.addEventListener('touchend', dragEnd);
+sliderContainer.addEventListener('mousemove', drag);
+sliderContainer.addEventListener('touchmove', drag);
+sliderContainer.addEventListener('mouseleave', dragEnd);
+
+function dragStart(e) {
+    if (isTransitioning) return;
+    isDragging = true;
+    startPos = getPositionX(e);
+    sliderContainer.style.cursor = 'grabbing';
+    sliderContainer.style.transition = 'none';
+    clearInterval(autoSlide);
+    
+    // MEVCUT HATALI YER: Sadece prev'i değil, current'ı da o anki konuma eşitlemeliyiz
+    prevTranslate = -currentSlide * sliderContainer.offsetWidth;
+    currentTranslate = prevTranslate; // Bunu ekle!
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(e);
+    currentTranslate = prevTranslate + currentPosition - startPos;
+    sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
+}
+
+function dragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    sliderContainer.style.cursor = 'grab';
+    
+    const movedBy = currentTranslate - prevTranslate;
+    
+    if (movedBy < -100) {
+        nextSlide();
+    } else if (movedBy > 100) {
+        prevSlide();
+    } else {
+        updateSlider(true); // Yeterli sürükleme yoksa geri çek
+    }
+    resetAutoSlide();
+}
+
+function getPositionX(e) {
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+}
+
+// Resim sürüklemeyi engelle
+document.querySelectorAll('.slide img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+
+// Hover durumunda durdur
+heroSlider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+heroSlider.addEventListener('mouseleave', () => {
+    if (!isDragging) resetAutoSlide();
+});
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe character cards, skill items, etc.
+        document.querySelectorAll('.character-card, .skill-item, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Choice option interactions
+
+        document.querySelectorAll('.choice-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.choice-option').forEach(opt => {
+                    opt.style.backgroundImage = "url('img/select.png')";
+                });
+                this.style.backgroundImage = "url('img/afterselect.png')";
+            });
+        });
+
+        /* nav scrolled */
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        });
+
+        /* contact */
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+
+            // Simulate form submission
+            console.log('Form submitted with data:', data);
+
+            // Show success message
+            successMessage.style.display = 'block';
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 7500);
+
+            // Add a subtle animation to the form
+            contactForm.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                contactForm.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        // Add floating animation to info items
+        const infoItems = document.querySelectorAll('.info-item');
+        infoItems.forEach((item, index) => {
+            item.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s backwards`;
+        });
+
+        // Add CSS animation keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Input focus effect
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateX(5px)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Form validation feedback
+        inputs.forEach(input => {
+            input.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ff6b6b';
+                setTimeout(() => {
+                    this.style.borderColor = '';
+                }, 2000);
+            });
+
+            input.addEventListener('input', function() {
+                if (this.validity.valid) {
+                    this.style.borderColor = '#90ee90';
+                } else {
+                    this.style.borderColor = '';
+                }
+            });
+        });
+
+        // mobile header 
+        const openBtn = document.getElementById('hamburger-open');
+        const closeBtn = document.getElementById('hamburger-close');
+        const mobileNavContent = document.getElementById('mobile-nav');
+
+        // Menüyü Aç
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                mobileNavContent.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+            });
+        }
+
+        // Menüyü Kapat
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                mobileNavContent.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Menü linklerine tıklanınca menüyü kapat (Scroll yaparken kapanması için)
+        document.querySelectorAll('#nav-mobile .nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavContent.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
