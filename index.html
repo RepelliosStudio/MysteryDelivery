@@ -1255,6 +1255,9 @@
               }
         }
 
+        .characters-grid-desktop{display:grid}
+        .characters-grid-mobile{display:none;}
+
         @media only screen and (max-width: 767px) {
           section{padding:2rem 2rem;margin-top: 0;}
           nav{position: relative;}
@@ -1271,6 +1274,8 @@
             height:127px;
 
           }
+          .characters-grid-mobile{display:grid;}
+          .characters-grid-desktop{display:none;}
           .combat-section{padding:0}
           .combat-section .btn-demo{margin-left:-30px;}
           .combat-info {text-align:center;}
@@ -1563,7 +1568,7 @@
             </div>
         </div>
         -->
-        <div class="characters-grid">
+        <div class="characters-grid characters-grid-desktop">
             <div class="character-card">
                 <div class="character-image"><img src="img/characters/fox.png" width="100%"></div>
                 <h3 class="character-name">FOX</h3>
@@ -1590,6 +1595,34 @@
                 <h3 class="character-name">GHORZA</h3>
                 <p class="character-desc">A strong and loyal chief guard, seeking justice.</p>
             </div>
+        </div>
+
+        <div class="characters-grid characters-grid-mobile">
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/courier.png" width="100%"></div>
+                <h3 class="character-name">COURIER</h3>
+                <p class="character-desc">A skilled courier with a mysterious past.</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/ashaka.png" width="100%"></div>
+                <h3 class="character-name">ASHAKA</h3>
+                <p class="character-desc">An apprentice of a healer with a charming heart</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/ghorza.png" width="100%"></div>
+                <h3 class="character-name">GHORZA</h3>
+                <p class="character-desc">A strong and loyal chief guard, seeking justice.</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/shaman.png" width="100%"></div>
+                <h3 class="character-name">SHAMAN</h3>
+                <p class="character-desc">A blessed with ancient power, restoring what others deem lost.</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/fox.png" width="100%"></div>
+                <h3 class="character-name">FOX</h3>
+                <p class="character-desc">A knack for stealing anything that isn’t nailed down.</p>
+            </div>         
         </div>
     </section>
 
