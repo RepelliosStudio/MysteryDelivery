@@ -29,12 +29,12 @@
 
         body {
             font-family: "MedievalSharp", cursive;
-            background: url(img/bg2.png) center;
+            background: url(img/ui/bodybackground.png) center;
             
             color: #d4af77;
             overflow-x: hidden;
 
-            cursor: url('img/cursor2.png'), auto;
+            cursor: url('img/ui/cursor.png'), auto;
         }
 
         /* Navigation */
@@ -183,7 +183,7 @@
 
         .btn-demo {
             background: linear-gradient(135deg, #8b4513, #cd7f32);
-            background: url(img/nameplate.png);
+            background: url(img/ui/nameplate.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             color: #fff;
@@ -353,11 +353,12 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 7.5rem 2rem;
+            margin-top: -5rem;
             padding-bottom:0px;
         }
 
         .section-title {
-            background: url(img/title.png) center;
+            background: url(img/ui/title.png) center;
             background-size: 100% 100%;
             background-repeat: no-repeat;
             height: 250px;
@@ -398,7 +399,7 @@
 
         .studio-image-holder{
             display:inline-block;
-            background:url('img/parsomen.png');
+            background:url('img/ui/scroll.png');
             background-size:100% 100%; 
             border-radius:25px;
             padding-top: 25px;
@@ -414,7 +415,7 @@
         /* Characters */
         .characters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 424px));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
             gap: 2rem;
             margin-top: 3rem;
             justify-content: center;
@@ -422,9 +423,9 @@
 
         .character-card {
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
-            /*border: 2px solid rgba(212, 175, 119, 0.3);*/
-            border-radius: 8px;
-            padding: 2rem;
+            border: 2px solid rgba(212, 175, 119, 0.3);
+            border-radius: 25px;
+            padding: 1rem;
             text-align: center;
             transition: all 0.4s;
             cursor: pointer;
@@ -432,14 +433,15 @@
             overflow: hidden;
         }
 
-        .character-card::after {
+        .character-image::after {
             content: '';
             position: absolute;
             inset: 0;
             opacity: 1;
             transition: opacity 0.4s;
-            background: url(img/border5.png);
+            background: url(img/ui/border.png);
             background-size:100% 100%;
+            
         }
 
         .character-card::before {
@@ -463,20 +465,23 @@
 
         .character-image {
             width: 100%;
-            height: 440px;
+            /*height: 440px;*/
             background: linear-gradient(135deg, #2c1810, #1a0f0a);
-            border-radius: 4px;
+            border-radius: 25px;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            border: 1px solid rgba(212, 175, 119, 0.2);
-            padding-top:24px;
+            /*border: 1px solid rgba(212, 175, 119, 0.2);*/
+            display: inline-block;
+            position: relative;
         }
 
+        .character-image img{border-radius:25px;}
+
         .character-name {
-            background:url("img/nameplate.png") center;
+            background:url("img/ui/nameplate.png") center;
             background-size:50% 100%;
             background-repeat:no-repeat;
             padding:10px;
@@ -487,10 +492,10 @@
         }
 
         .character-desc {
-            background:url("img/parsomen.png") center;
+            background:url("img/ui/scroll.png") center;
             background-size:100% 100%;
             background-repeat:no-repeat;
-            padding:10px;
+            padding:25px;
             font-size: 18px;
             color: white;
             line-height: 1.5;
@@ -511,13 +516,13 @@
 
         .combat-info{
             padding-left:30px;
-            background:url("img/parsomen.png");
+            background:url("img/ui/scroll.png");
             background-size:100% 75%;
             background-repeat:no-repeat;
         }
 
         .combat-info h3 {
-            background:url("img/nameplate.png");
+            background:url("img/ui/nameplate.png");
             background-size:100% 100%;
             padding:10px;
             background-repeat:no-repeat;
@@ -551,7 +556,7 @@
             align-items: center;
             border-style: solid;
             border-width: 40px;
-            border-image-source: url('img/border3.png'); 
+            border-image-source: url('img/ui/border3.png'); 
             border-image-slice: 100 100 100 100 fill; 
             border-image-repeat: stretch;
         }
@@ -560,6 +565,10 @@
             width: 100%;
             text-align: center;
             color: #d4af77;
+        }
+
+        .combat-demo img{
+            border-radius:25px;
         }
 
         /* Skills Grid */
@@ -592,7 +601,7 @@
             justify-content: center;
             font-size: 3rem;
             transition: all 0.3s;
-            padding:15px;
+            padding:19px;
         }
 
         .skill-item:hover .skill-icon {
@@ -622,10 +631,9 @@
 
         .story-text {
             background: rgba(139, 69, 19, 0.1);
-            background: url(img/parsomen.png) center;
+            background: url(img/ui/scroll.png) center;
             background-size:100% 50%;
             /*border: 2px solid rgba(212, 175, 119, 0.3);*/
-            border-radius: 8px;
             padding: 3rem;
             display: flex;
             justify-content: center;
@@ -634,7 +642,7 @@
         }
 
         .story-text h3 {
-            background: url("img/nameplate.png");
+            background: url("img/ui/nameplate.png");
             background-size:55% 100%;
             background-repeat: no-repeat;
             padding:10px;
@@ -654,10 +662,9 @@
 
         .choices-panel {
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
-            background: url("img/selectbg.png");
+            background: url("img/ui/selectbackground.png");
             background-size: 100% 100%;
             /*border: 2px solid rgba(212, 175, 119, 0.3);*/
-            border-radius: 8px;
             padding-left: 5rem;
             padding-right: 5rem;
             padding-bottom: 1.5rem;
@@ -673,10 +680,9 @@
 
         .choice-option {
             background: rgba(139, 69, 19, 0.2);
-            background: url(img/select.png);
+            background: url(img/ui/select.png);
             background-size:100% 100%;
             /*border: 1px solid rgba(212, 175, 119, 0.3);*/
-            border-radius: 4px;
             padding: 2.3rem 3rem;
             cursor: pointer;
             transition: all 0.3s;
@@ -692,7 +698,7 @@
         }
 
         .choice-option:hover {
-            background: url(img/afterselect.png);
+            background: url(img/ui/afterselect.png);
             background-size:100% 100%;
             /*background: rgba(205, 127, 50, 0.2);*/
             /*border-color: #cd7f32;*/
@@ -723,7 +729,7 @@
             /*height: 250px;*/
             background: linear-gradient(135deg, #2c1810, #1a0f0a);
             border: 2px solid rgba(212, 175, 119, 0.3);
-            border-radius: 8px;
+            border-radius: 25px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.4s;
@@ -840,7 +846,7 @@
             padding: 0.8rem;
             background: rgba(139, 69, 19, 0.2);
             border: 1px solid rgba(212, 175, 119, 0.3);
-            border-radius: 4px;
+            border-radius: 25px;
             color: #d4af77;
             margin-bottom: 1rem;
         }
@@ -879,7 +885,7 @@
             width: 100%;
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(205, 127, 50, 0.05));
             border: 2px solid rgba(212, 175, 119, 0.3);
-            border-radius: 12px;
+            border-radius: 25px;
             padding: 3rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
@@ -887,7 +893,7 @@
             margin:0 auto;
             border-style: solid;
             border-width: 40px;
-            border-image-source: url(img/border3.png);
+            border-image-source: url(img/ui/border3.png);
             border-image-slice: 100 100 100 100 fill;
             border-image-repeat: stretch;
         }
@@ -1032,7 +1038,7 @@
             padding: 1rem;
             background: rgba(139, 69, 19, 0.2);
             border: 1px solid rgba(212, 175, 119, 0.3);
-            border-radius: 6px;
+            border-radius: 15px;
             color: #d4af77;
             font-family: inherit;
             font-size: 20px;
@@ -1077,7 +1083,7 @@
             color: #fff;
             padding: 1rem 2rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 15px;
             cursor: pointer;
             font-family: inherit;
             font-size: 1rem;
@@ -1125,7 +1131,7 @@
             border: 1px solid rgba(50, 205, 50, 0.4);
             color: #90ee90;
             padding: 1rem;
-            border-radius: 6px;
+            border-radius: 15px;
             text-align: center;
             display: none;
             animation: slideDown 0.5s ease-out;
@@ -1250,7 +1256,7 @@
         }
 
         @media only screen and (max-width: 767px) {
-          section{padding:2rem 2rem;}
+          section{padding:2rem 2rem;margin-top: 0;}
           nav{position: relative;}
           .hero-slider{margin-top:0px;}
           .slider-arrow{display:none;}
@@ -1351,7 +1357,7 @@
                 right: -100%; /* Başlangıçta ekran dışında */
                 width: 280px;
                 height: 100vh;
-                background: #1a120b url(img/bg2.png); /* Temaya uygun arka plan */
+                background: #1a120b url(img/ui/bodybackground.png); /* Temaya uygun arka plan */
                 border-left: 2px solid #d4af77;
                 display: none;
                 flex-direction: column;
@@ -1430,7 +1436,7 @@
                 MEDIEVAL
                 <small>★ VISUAL NOVEL ★</small>
                 -->
-                <img src="img/gamelogo.png" width="350px">
+                <img src="img/logo/gamelogo.png" width="350px">
             </div>
 
             <div class="header-links">
@@ -1460,7 +1466,7 @@
     <nav id="nav-mobile">
         <div class="container">
             <div class="logo header-logo">
-                <img src="img/gamelogo.png" width="350px">
+                <img src="img/logo/gamelogo.png" width="350px">
             </div>
 
             <div class="hamburger-open" id="hamburger-open">
@@ -1496,7 +1502,7 @@
     <!-- Hero Slider -->
     <div class="hero-slider" id="home">
         <div class="slider-container">
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/forkroad.png');">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/forkroad.png');">
                 <div class="slide-content">
                     <h1 class="slide-title">Welcome</h1>
                     <div class="slide-subtitle">JOIN OUR JOURNEY</div>
@@ -1504,7 +1510,7 @@
                     <button class="btn-demo">Play Demo</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/tavern.png');">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/tavern.png');">
                 <div class="slide-content">
                     <h1 class="slide-title">Your Choices</h1>
                     <div class="slide-subtitle">SHAPE YOUR DESTINY</div>
@@ -1512,7 +1518,7 @@
                     <button class="btn-demo" onclick="window.location.href='#skills'">Start Journey</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/cave.png');">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/cave.png');">
                 <div class="slide-content">
                     <h1 class="slide-title">Turn Based Combats</h1>
                     <div class="slide-subtitle">STRATEGIC COMBAT</div>
@@ -1535,32 +1541,45 @@
     <!-- Characters Section -->
     <section id="about">
         <h2 class="section-title"><span>REPELLIOS STUDIO</span></h2>
-        <div class="studio-image-holder"><img src="img/studiologo.png"></div>
+        <div class="studio-image-holder"><img src="img/logo/studiologo.png"></div>
     </section>
-    <section id="characters">
+    <section id="characters" style="max-width:100%;">
         <h2 class="section-title"><span>MEET THE CHARACTERS</span></h2>
+        <!--
         <div class="characters-grid">
             <div class="character-card">
-                <div class="character-image"><img src="img/Courier_Neutral.png" width="100%"></div>
+                <div class="character-image"><img src="img/characters/courier.png" width="100%"></div>
                 <h3 class="character-name">COURIER</h3>
                 <p class="character-desc">Skilled courier with a mysterious past.</p>
             </div>
         </div>
+        -->
         <div class="characters-grid">
             <div class="character-card">
-                <div class="character-image"><img src="img/Ashaka_Blush.png" width="100%"></div>
+                <div class="character-image"><img src="img/characters/fox.png" width="100%"></div>
+                <h3 class="character-name">FOX</h3>
+                <p class="character-desc">A knack for stealing anything that isn’t nailed down.</p>
+            </div>
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/ashaka.png" width="100%"></div>
                 <h3 class="character-name">ASHAKA</h3>
                 <p class="character-desc">An apprentice of a healer with a charming heart</p>
             </div>
             <div class="character-card">
-                <div class="character-image"><img src="img/Ghorza_Angry_Reverse.png" width="100%"></div>
-                <h3 class="character-name">GHORZA</h3>
-                <p class="character-desc">A strong and loyal chief guard, seeking justice.</p>
+                <div class="character-image"><img src="img/characters/courier.png" width="100%"></div>
+                <h3 class="character-name">COURIER</h3>
+                <p class="character-desc">A skilled courier with a mysterious past.</p>
             </div>
             <div class="character-card">
-                <div class="character-image"><img src="img/Shaman_Neutral.png" width="100%"></div>
+                <div class="character-image"><img src="img/characters/shaman.png" width="100%"></div>
                 <h3 class="character-name">SHAMAN</h3>
-                <p class="character-desc">A shadowy figure wielding powerful magic.</p>
+                <p class="character-desc">A blessed with ancient power, restoring what others deem lost.</p>
+            </div>
+            
+            <div class="character-card">
+                <div class="character-image"><img src="img/characters/ghorza.png" width="100%"></div>
+                <h3 class="character-name">GHORZA</h3>
+                <p class="character-desc">A strong and loyal chief guard, seeking justice.</p>
             </div>
         </div>
     </section>
@@ -1576,7 +1595,7 @@
             </div>
             <div class="combat-preview">
                 <div class="combat-demo">
-                    <img src="img/combat.jpeg" width="100%">
+                    <img src="img/ingame/combat.jpeg" width="100%">
                 </div>
             </div>
         </div>
@@ -1587,27 +1606,27 @@
         <h2 class="section-title"><span>MASTER ELEMENTAL SKILLS</span></h2>
         <div class="skills-grid">
             <div class="skill-item">
-                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,69,0,0.3), transparent);"><img src="img/fire.png" width="100%"></div>
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,69,0,0.3), transparent);"><img src="img/skills/fire.png" width="100%"></div>
                 <h4 class="skill-name">FIRE</h4>
                 <p class="skill-desc">Scorch your enemies with devastating flames.</p>
             </div>
             <div class="skill-item">
-                <div class="skill-icon" style="background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);"><img src="img/wind.png" width="100%"></div>
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(135,206,235,0.3), transparent);"><img src="img/skills/air.png" width="100%"></div>
                 <h4 class="skill-name">AIR</h4>
                 <p class="skill-desc">Control the wind and strike swiftly.</p>
             </div>
             <div class="skill-item">
-                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);"><img src="img/lightning.png" width="100%"></div>
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);"><img src="img/skills/lightning.png" width="100%"></div>
                 <h4 class="skill-name">LIGHTNING</h4>
                 <p class="skill-desc">Call down lightning to shock and stun.</p>
             </div>
             <div class="skill-item">
-                <div class="skill-icon" style="background: radial-gradient(circle, rgba(0,191,255,0.3), transparent);"><img src="img/water.png" width="100%"></div>
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(0,191,255,0.3), transparent);"><img src="img/skills/water.png" width="100%"></div>
                 <h4 class="skill-name">WATER</h4>
                 <p class="skill-desc">Heal allies and wash away foes.</p>
             </div>
             <div class="skill-item">
-                <div class="skill-icon" style="background: radial-gradient(circle, rgba(139,69,19,0.3), transparent);"><img src="img/rock.png" width="100%"></div>
+                <div class="skill-icon" style="background: radial-gradient(circle, rgba(139,69,19,0.3), transparent);"><img src="img/skills/earth.png" width="100%"></div>
                 <h4 class="skill-name">ROCK</h4>
                 <p class="skill-desc">Fortify your defense and crush your foes.</p>
             </div>
@@ -1645,10 +1664,10 @@
     <section id="gallery">
         <h2 class="section-title"><span>GALLERY</span></h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="img/cave.png" width="100%"></div>
-            <div class="gallery-item"><img src="img/forkroad.png" width="100%"></div>
-            <div class="gallery-item"><img src="img/shamanhouse.png" width="100%"></div>
-            <div class="gallery-item"><img src="img/tavern.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/cave.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/forkroad.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/shamanhouse.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/tavern.png" width="100%"></div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
             
