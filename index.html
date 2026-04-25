@@ -176,19 +176,6 @@
         .nav-links a:hover {
             color: #ff8c42;
         }
-        /*
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #ff8c42;
-            transition: width 0.3s;
-        }
-        */
 
         .nav-links a:hover::after {
             width: 100%;
@@ -1231,6 +1218,7 @@
         }
 
         @media only screen and (max-width: 1575px) {
+            .header-button-patreon{margin-right:0px;margin-bottom:5px;}
             .header-right{flex-direction: column;}
         }
 
@@ -1240,6 +1228,7 @@
             .hero-slider{margin-top:-203px;}
             .header-right{flex-direction: row;}
             #nav-desktop .container{flex-direction: column;}
+            .header-button-patreon{margin-right:0.75rem;margin-bottom:0px;}
             .header-links{margin-top:10px;margin-bottom:10px;}
             
 
@@ -1462,7 +1451,7 @@
             </div>
             -->
             <div class="header-right">
-                <div class="header-button header-button-patreon"><button class="btn-demo"><i class="fa-brands fa-patreon"></i> Patreon</button></div>
+                <div class="header-button header-button-patreon"><button class="btn-demo" onclick="window.open('https://www.patreon.com/cw/RepelliosStudio')"><i class="fa-brands fa-patreon"></i> Patreon</button></div>
                 <div class="header-button"><button class="btn-demo">Play Demo</button></div>
             </div>
         </div>
@@ -1471,10 +1460,6 @@
     <nav id="nav-mobile">
         <div class="container">
             <div class="logo header-logo">
-                <!--
-                MEDIEVAL
-                <small>★ VISUAL NOVEL ★</small>
-                -->
                 <img src="img/gamelogo.png" width="350px">
             </div>
 
@@ -1497,10 +1482,10 @@
                     <li><a href="#gallery">Gallery</a></li>
                 </ul>
                 <div class="social-links">
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></div>
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-itch-io"></i></a></div>
+                    <div class="social-icon"><a href="https://x.com/repelliosstudio" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></div>
+                    <div class="social-icon"><a href="https://repellios-studio.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i></a></div>
                 </div>
-                <div class="header-button header-button-patreon"><button class="btn-demo"><i class="fa-brands fa-patreon"></i> Patreon</button></div>
+                <div class="header-button header-button-patreon"><button class="btn-demo" onclick="window.open('https://www.patreon.com/cw/RepelliosStudio')"><i class="fa-brands fa-patreon"></i> Patreon</button></div>
                 <div class="header-button"><button class="btn-demo">Play Demo</button></div>
                 </div>
             </div>
@@ -1524,7 +1509,7 @@
                     <h1 class="slide-title">Your Choices</h1>
                     <div class="slide-subtitle">SHAPE YOUR DESTINY</div>
                     <p class="slide-description">Every decision matters. Shape the world through your choices.</p>
-                    <button class="btn-demo">Start Journey</button>
+                    <button class="btn-demo" onclick="window.location.href='#skills'">Start Journey</button>
                 </div>
             </div>
             <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/cave.png');">
@@ -1532,7 +1517,7 @@
                     <h1 class="slide-title">Turn Based Combats</h1>
                     <div class="slide-subtitle">STRATEGIC COMBAT</div>
                     <p class="slide-description">Master turn-based combat with elemental skills and tactical gameplay.</p>
-                    <button class="btn-demo" onclick="window.location.href='#skills'">Learn More</button>
+                    <button class="btn-demo" onclick="window.location.href='#skills'">Learn More</button> 
                 </div>
             </div>
             
@@ -1587,7 +1572,7 @@
             <div class="combat-info">
                 <h3>Turn-Based Strategy</h3>
                 <p>Battle sinister creatures in turn-based combat. Use your strategy and elemental skills to turn the tide of battle.</p>
-                <button class="btn-demo">Learn More</button>
+                <button class="btn-demo" onclick="window.location.href='#skills'">Learn More</button>
             </div>
             <div class="combat-preview">
                 <div class="combat-demo">
@@ -1666,7 +1651,7 @@
             <div class="gallery-item"><img src="img/tavern.png" width="100%"></div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <!--<button class="btn-demo">View More</button>-->
+            
         </div>
     </section>
 
@@ -1675,10 +1660,6 @@
         <h2 class="section-title"><span>CONTACT US</span></h2>
         <div class="contact-container">
         <div class="contact-header">
-            <!--
-            <h1 class="contact-title">CONTACT US</h1>
-            <div class="divider"></div>
-            -->
             <p class="contact-subtitle">We'd love to hear from you</p>
         </div>
 
@@ -1747,9 +1728,9 @@
                 <h3>JOIN THE COMMUNITY</h3>
                 <p>Stay updated with the latest news and updates</p>
                 <div class="social-links">
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></div>
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-patreon"></i></a></div>
-                    <div class="social-icon"><a href="#"><i class="fa-brands fa-itch-io"></i></a></div>
+                    <div class="social-icon"><a href="https://x.com/repelliosstudio" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></div>
+                    <div class="social-icon"><a href="https://www.patreon.com/cw/RepelliosStudio" target="_blank"><i class="fa-brands fa-patreon"></i></a></div>
+                    <div class="social-icon"><a href="https://repellios-studio.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i></a></div>
                 </div>
             </div>
         </div>
@@ -1758,223 +1739,183 @@
         </div>
     </footer>
 
-    
-    <!--
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h2>Medieval<br><small style="font-size: 0.6rem; letter-spacing: 2px;">★ VISUAL NOVEL ★</small></h2>
-                <p>A story-driven medieval visual novel where your choices shape the world around you.</p>
-            </div>
-            <div class="footer-links">
-                <h3>QUICK LINKS</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#characters">Characters</a></li>
-                    <li><a href="#combat">Combat</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>STAY CONNECTED</h3>
-                <div class="social-links">
-                    <div class="social-icon">𝕏</div>
-                    <div class="social-icon">f</div>
-                    <div class="social-icon">📷</div>
-                    <div class="social-icon">▶</div>
-                </div>
-            </div>
-            <div class="newsletter">
-                <h3>NEWSLETTER</h3>
-                <p style="color: #a89776; margin-bottom: 1rem; font-size: 0.9rem;">Subscribe for the latest updates.</p>
-                <input type="email" placeholder="Your email address">
-                <button class="btn-demo">Subscribe</button>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 Medieval Visual Novel. All rights reserved. | <a href="#" style="color: #a89776;">Privacy Policy</a> | <a href="#" style="color: #a89776;">Terms of Service</a></p>
-        </div>
-    </footer>
-    -->
-
     <script>
-// Slider functionality
-const sliderContainer = document.querySelector('.slider-container');
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.slider-dot');
-const leftArrow = document.querySelector('.slider-arrow.left');
-const rightArrow = document.querySelector('.slider-arrow.right');
-const heroSlider = document.querySelector('.hero-slider');
+        // Slider
+        const sliderContainer = document.querySelector('.slider-container');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const leftArrow = document.querySelector('.slider-arrow.left');
+        const rightArrow = document.querySelector('.slider-arrow.right');
+        const heroSlider = document.querySelector('.hero-slider');
 
-let currentSlide = 0;
-const totalSlides = slides.length;
-let isTransitioning = false; // Çift tetiklemeyi önlemek için kilit
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let isTransitioning = false; // Çift tetiklemeyi önlemek için kilit
 
-// Sonsuz slider için klon slide'lar oluştur
-function createInfiniteSlider() {
-    const firstClone = slides[0].cloneNode(true);
-    firstClone.classList.add('clone');
-    sliderContainer.appendChild(firstClone);
-    
-    const lastClone = slides[totalSlides - 1].cloneNode(true);
-    lastClone.classList.add('clone');
-    sliderContainer.insertBefore(lastClone, slides[0]);
-    
-    currentSlide = 1;
-    sliderContainer.style.transition = 'none';
-    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    dots[0].classList.add('active');
-}
+        // Infinite slider
+        function createInfiniteSlider() {
+            const firstClone = slides[0].cloneNode(true);
+            firstClone.classList.add('clone');
+            sliderContainer.appendChild(firstClone);
+            
+            const lastClone = slides[totalSlides - 1].cloneNode(true);
+            lastClone.classList.add('clone');
+            sliderContainer.insertBefore(lastClone, slides[0]);
+            
+            currentSlide = 1;
+            sliderContainer.style.transition = 'none';
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots[0].classList.add('active');
+        }
 
-createInfiniteSlider();
+        createInfiniteSlider();
 
-function updateSlider(withTransition = true) {
-    if (withTransition) {
-        isTransitioning = true;
-        sliderContainer.style.transition = 'transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)';
-    } else {
-        sliderContainer.style.transition = 'none';
-    }
-    
-    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Dot güncelleme mantığı
-    const actualSlide = currentSlide === 0 ? totalSlides - 1 : 
-                        currentSlide === totalSlides + 1 ? 0 : 
-                        currentSlide - 1;
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === actualSlide);
-    });
+        function updateSlider(withTransition = true) {
+            if (withTransition) {
+                isTransitioning = true;
+                sliderContainer.style.transition = 'transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)';
+            } else {
+                sliderContainer.style.transition = 'none';
+            }
+            
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Slider dot
+            const actualSlide = currentSlide === 0 ? totalSlides - 1 : 
+                                currentSlide === totalSlides + 1 ? 0 : 
+                                currentSlide - 1;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === actualSlide);
+            });
 
-    // Geçiş bittiğinde kilidi aç (0.8s = 800ms)
-    if (withTransition) {
-        
-        setTimeout(() => {
-            isTransitioning = false;
-            checkBoundary();
-        }, 500);
+            // Open click when transition ends
+            if (withTransition) {
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                    checkBoundary();
+                }, 500);
 
-    }
-}
+            }
+        }
 
-// Sınırları kontrol edip klonlardan gerçek slide'lara atlayan yardımcı fonksiyon
-function checkBoundary() {
-    if (currentSlide === totalSlides + 1) {
-        currentSlide = 1;
-        updateSlider(false);
-    } else if (currentSlide === 0) {
-        currentSlide = totalSlides;
-        updateSlider(false);
-    }
-}
+        // Boundries
+        function checkBoundary() {
+            if (currentSlide === totalSlides + 1) {
+                currentSlide = 1;
+                updateSlider(false);
+            } else if (currentSlide === 0) {
+                currentSlide = totalSlides;
+                updateSlider(false);
+            }
+        }
 
-function nextSlide() {
-    if (isTransitioning) return;
-    currentSlide++;
-    updateSlider(true);
-}
+        function nextSlide() {
+            if (isTransitioning) return;
+            currentSlide++;
+            updateSlider(true);
+        }
 
-function prevSlide() {
-    if (isTransitioning) return;
-    currentSlide--;
-    updateSlider(true);
-}
+        function prevSlide() {
+            if (isTransitioning) return;
+            currentSlide--;
+            updateSlider(true);
+        }
 
-// Auto-advance
-let autoSlide = setInterval(nextSlide, 5000);
+        // Auto-advance
+        let autoSlide = setInterval(nextSlide, 5000);
 
-function resetAutoSlide() {
-    clearInterval(autoSlide);
-    autoSlide = setInterval(nextSlide, 5000);
-}
+        function resetAutoSlide() {
+            clearInterval(autoSlide);
+            autoSlide = setInterval(nextSlide, 5000);
+        }
 
-// Event Listeners
-rightArrow.addEventListener('click', () => {
-    nextSlide();
-    resetAutoSlide();
-});
+        // Event Listeners
+        rightArrow.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
 
-leftArrow.addEventListener('click', () => {
-    prevSlide();
-    resetAutoSlide();
-});
+        leftArrow.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
 
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        if (isTransitioning) return;
-        currentSlide = index + 1;
-        updateSlider(true);
-        resetAutoSlide();
-    });
-});
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                if (isTransitioning) return;
+                currentSlide = index + 1;
+                updateSlider(true);
+                resetAutoSlide();
+            });
+        });
 
-// Draggable Logic
-let isDragging = false;
-let startPos = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
+        // Draggable Logic
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
 
-sliderContainer.addEventListener('mousedown', dragStart);
-sliderContainer.addEventListener('touchstart', dragStart);
-sliderContainer.addEventListener('mouseup', dragEnd);
-sliderContainer.addEventListener('touchend', dragEnd);
-sliderContainer.addEventListener('mousemove', drag);
-sliderContainer.addEventListener('touchmove', drag);
-sliderContainer.addEventListener('mouseleave', dragEnd);
+        sliderContainer.addEventListener('mousedown', dragStart);
+        sliderContainer.addEventListener('touchstart', dragStart);
+        sliderContainer.addEventListener('mouseup', dragEnd);
+        sliderContainer.addEventListener('touchend', dragEnd);
+        sliderContainer.addEventListener('mousemove', drag);
+        sliderContainer.addEventListener('touchmove', drag);
+        sliderContainer.addEventListener('mouseleave', dragEnd);
 
-function dragStart(e) {
-    if (isTransitioning) return;
-    isDragging = true;
-    startPos = getPositionX(e);
-    sliderContainer.style.cursor = 'grabbing';
-    sliderContainer.style.transition = 'none';
-    clearInterval(autoSlide);
-    
-    // MEVCUT HATALI YER: Sadece prev'i değil, current'ı da o anki konuma eşitlemeliyiz
-    prevTranslate = -currentSlide * sliderContainer.offsetWidth;
-    currentTranslate = prevTranslate; // Bunu ekle!
-}
+        function dragStart(e) {
+            if (isTransitioning) return;
+            isDragging = true;
+            startPos = getPositionX(e);
+            sliderContainer.style.cursor = 'grabbing';
+            sliderContainer.style.transition = 'none';
+            clearInterval(autoSlide);
+            
+            prevTranslate = -currentSlide * sliderContainer.offsetWidth;
+            currentTranslate = prevTranslate; // Bunu ekle!
+        }
 
-function drag(e) {
-    if (!isDragging) return;
-    const currentPosition = getPositionX(e);
-    currentTranslate = prevTranslate + currentPosition - startPos;
-    sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
-}
+        function drag(e) {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(e);
+            currentTranslate = prevTranslate + currentPosition - startPos;
+            sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
+        }
 
-function dragEnd() {
-    if (!isDragging) return;
-    isDragging = false;
-    sliderContainer.style.cursor = 'grab';
-    
-    const movedBy = currentTranslate - prevTranslate;
-    
-    if (movedBy < -100) {
-        nextSlide();
-    } else if (movedBy > 100) {
-        prevSlide();
-    } else {
-        updateSlider(true); // Yeterli sürükleme yoksa geri çek
-    }
-    resetAutoSlide();
-}
+        function dragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            sliderContainer.style.cursor = 'grab';
+            
+            const movedBy = currentTranslate - prevTranslate;
+            
+            if (movedBy < -100) {
+                nextSlide();
+            } else if (movedBy > 100) {
+                prevSlide();
+            } else {
+                updateSlider(true);
+            }
+            resetAutoSlide();
+        }
 
-function getPositionX(e) {
-    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-}
+        function getPositionX(e) {
+            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        }
 
-// Resim sürüklemeyi engelle
-document.querySelectorAll('.slide img').forEach(img => {
-    img.addEventListener('dragstart', (e) => e.preventDefault());
-});
+        // Image draggable false
+        document.querySelectorAll('.slide img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
 
-// Hover durumunda durdur
-heroSlider.addEventListener('mouseenter', () => clearInterval(autoSlide));
-heroSlider.addEventListener('mouseleave', () => {
-    if (!isDragging) resetAutoSlide();
-});
+        // Stop when hovered
+        heroSlider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        heroSlider.addEventListener('mouseleave', () => {
+            if (!isDragging) resetAutoSlide();
+        });
 
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2014,7 +1955,6 @@ heroSlider.addEventListener('mouseleave', () => {
         });
 
         // Choice option interactions
-
         document.querySelectorAll('.choice-option').forEach(option => {
             option.addEventListener('click', function() {
                 document.querySelectorAll('.choice-option').forEach(opt => {
@@ -2024,7 +1964,7 @@ heroSlider.addEventListener('mouseleave', () => {
             });
         });
 
-        /* nav scrolled */
+        /* Nav scrolled */
         const navbardesktop = document.querySelector('#nav-desktop');
 
         window.addEventListener('scroll', () => {
@@ -2045,7 +1985,7 @@ heroSlider.addEventListener('mouseleave', () => {
           }
         });
 
-        /* contact */
+        /* Contact */
         // Form submission handling
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
@@ -2112,7 +2052,7 @@ heroSlider.addEventListener('mouseleave', () => {
             });
         });
 
-        // Form validation feedback
+        // Form validation
         inputs.forEach(input => {
             input.addEventListener('invalid', function(e) {
                 e.preventDefault();
@@ -2131,12 +2071,12 @@ heroSlider.addEventListener('mouseleave', () => {
             });
         });
 
-        // mobile header 
+        // Mobile header 
         const openBtn = document.getElementById('hamburger-open');
         const closeBtn = document.getElementById('hamburger-close');
         const mobileNavContent = document.getElementById('mobile-nav');
 
-        // Menüyü Aç
+        // Menu open
         if (openBtn) {
             openBtn.addEventListener('click', () => {
                 mobileNavContent.classList.add('active');
@@ -2144,7 +2084,7 @@ heroSlider.addEventListener('mouseleave', () => {
             });
         }
 
-        // Menüyü Kapat
+        // Menu close
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 mobileNavContent.classList.remove('active');
@@ -2152,7 +2092,7 @@ heroSlider.addEventListener('mouseleave', () => {
             });
         }
 
-        // Menü linklerine tıklanınca menüyü kapat (Scroll yaparken kapanması için)
+        // Menu close when link clicked
         document.querySelectorAll('#nav-mobile .nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileNavContent.classList.remove('active');
