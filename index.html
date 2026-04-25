@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/logo/favicon.png">
     <title>Medieval Visual Novel</title>
     <style>
         * {
@@ -235,7 +235,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            /*background: linear-gradient(to bottom, rgba(10, 6, 4, 0.3), rgba(10, 6, 4, 0.1));*/
+            background: linear-gradient(to bottom, rgba(10, 6, 4, 0.3), rgba(10, 6, 4, 0.1));
         }
 
         .slide-content {
@@ -439,8 +439,8 @@
             inset: 0;
             opacity: 1;
             transition: opacity 0.4s;
-            background: url(img/ui/border.png);
-            background-size:100% 100%;
+            /*background: url(img/ui/border.png);
+            background-size:100% 100%;*/
             
         }
 
@@ -478,7 +478,7 @@
             position: relative;
         }
 
-        .character-image img{border-radius:25px;}
+        .character-image img{border-radius:15px;}
 
         .character-name {
             background:url("img/ui/nameplate.png") center;
@@ -1502,7 +1502,7 @@
     <!-- Hero Slider -->
     <div class="hero-slider" id="home">
         <div class="slider-container">
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/forkroad.png');">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/tavern.png');">
                 <div class="slide-content">
                     <h1 class="slide-title">Welcome</h1>
                     <div class="slide-subtitle">JOIN OUR JOURNEY</div>
@@ -1510,7 +1510,7 @@
                     <button class="btn-demo">Play Demo</button>
                 </div>
             </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/tavern.png');">
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/shamaninteriornight.png');">
                 <div class="slide-content">
                     <h1 class="slide-title">Your Choices</h1>
                     <div class="slide-subtitle">SHAPE YOUR DESTINY</div>
@@ -1526,12 +1526,21 @@
                     <button class="btn-demo" onclick="window.location.href='#skills'">Learn More</button> 
                 </div>
             </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('img/ingame/ashakainteriormorning.png');">
+                <div class="slide-content">
+                    <h1 class="slide-title">Meet Our Characters</h1>
+                    <div class="slide-subtitle">SECRETS & FATES</div>
+                    <p class="slide-description">Meet a cast of unique souls, each carrying their own story, skills, and secrets.</p>
+                    <button class="btn-demo" onclick="window.location.href='#characters'">Our Characters</button> 
+                </div>
+            </div>
             
         </div>
         <div class="slider-arrow left">‹</div>
         <div class="slider-arrow right">›</div>
         <div class="slider-controls">
             <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
             <div class="slider-dot"></div>
             <div class="slider-dot"></div>
         </div>
@@ -1664,10 +1673,13 @@
     <section id="gallery">
         <h2 class="section-title"><span>GALLERY</span></h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="img/ingame/cave.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/ashakainteriornight.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/tavern.png" width="100%"></div>
             <div class="gallery-item"><img src="img/ingame/forkroad.png" width="100%"></div>
             <div class="gallery-item"><img src="img/ingame/shamanhouse.png" width="100%"></div>
-            <div class="gallery-item"><img src="img/ingame/tavern.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/cave.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/ogrecave.png" width="100%"></div>
+            <div class="gallery-item"><img src="img/ingame/shamaninteriornight.png" width="100%"></div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
             
