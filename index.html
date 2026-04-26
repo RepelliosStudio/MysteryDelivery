@@ -1322,6 +1322,8 @@
           .studio-image-holder img{
             width:150px;
             }
+
+            #popupContent {margin-top:50px;}
         }
 
         @media (max-width: 767px) {
@@ -1443,6 +1445,133 @@
             #nav-mobile .header-content .header-button {
                 width:160px;
                 margin-top: 20px;
+            }
+        }
+
+        /* Gallery Popup Styles */
+        #galleryPopup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 6, 4, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-btn {
+            background: rgba(212, 175, 119, 0.2);
+            border: 2px solid #d4af77;
+            color: #d4af77;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+
+        .popup-btn:hover {
+            background: rgba(205, 127, 50, 0.3);
+            border-color: #cd7f32;
+        }
+
+        #closePopup {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+
+        #closePopup:hover {
+            transform: rotate(90deg);
+        }
+
+        #prevImage {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #nextImage {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #popupContent {
+            max-width: 90%;
+            max-height: 90%;
+            background: linear-gradient(135deg, #2c1810, #1a0f0a);
+            border: 3px solid #d4af77;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(205, 127, 50, 0.5);
+            position: relative;
+            overflow: hidden;
+            width:100%;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #popupImageContainer {
+            width: 100%;
+            height: 98%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        .popup-placeholder {
+            font-size: 5rem;
+            color: #d4af77;
+        }
+
+        #imageCounter {
+            text-align: center;
+            margin-top: 1rem;
+            color: #d4af77;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            #popupContent {
+                max-width: 95%;
+                padding: 1rem;
+            }
+
+            #popupImageContainer {
+                height: 50vh;
+            }
+
+            .popup-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            #closePopup {
+                top: 15px;
+                right: 15px;
+            }
+
+            #prevImage {
+                left: 15px;
+            }
+
+            #nextImage {
+                right: 15px;
             }
         }
     </style>
@@ -1800,6 +1929,19 @@
             </form>
         </div>
     </section>
+
+    <!-- Gallery Popup -->
+    <div id="galleryPopup">
+        <button id="closePopup" class="popup-btn">✕</button>
+        <button id="prevImage" class="popup-btn">‹</button>
+        <button id="nextImage" class="popup-btn">›</button>
+        <div id="popupContent">
+            <div id="popupImageContainer">
+                <div class="popup-placeholder">🖼️</div>
+            </div>
+            <div id="imageCounter"></div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -2182,6 +2324,152 @@
                 mobileNavContent.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
+        });
+
+        // Gallery popup functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const popup = document.getElementById('galleryPopup');
+        const closeBtnPopup = document.getElementById('closePopup');
+        const prevBtn = document.getElementById('prevImage');
+        const nextBtn = document.getElementById('nextImage');
+        const popupContent = document.getElementById('popupImageContainer');
+        const imageCounter = document.getElementById('imageCounter');
+
+        let currentImageIndex = 0;
+
+        // Gallery item'lara click event ekle
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                openPopup();
+            });
+        });
+
+        function openPopup() {
+            popup.style.display = 'flex';
+            updatePopupImage();
+            document.body.style.overflow = 'hidden';
+            
+            // Popup animasyonu
+            popup.style.opacity = '0';
+            setTimeout(() => {
+                popup.style.transition = 'opacity 0.3s ease';
+                popup.style.opacity = '1';
+            }, 10);
+        }
+
+        function closePopup() {
+            popup.style.opacity = '0';
+            setTimeout(() => {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        function updatePopupImage() {
+        // Galeri içeriğini güncelle
+        const currentItem = galleryItems[currentImageIndex];
+        const img = currentItem.querySelector('img');
+        
+        if (img && img.src) {
+            // Eğer img tag'i varsa, onun src'sini kullan
+            popupContent.style.backgroundImage = `url('${img.src}')`;
+            popupContent.style.backgroundSize = 'contain';
+            popupContent.style.backgroundPosition = 'center';
+            popupContent.style.backgroundRepeat = 'no-repeat';
+            popupContent.innerHTML = '';
+        } else {
+            // Eğer img yoksa background-image'i kontrol et
+            const bgImage = window.getComputedStyle(currentItem).backgroundImage;
+            
+            if (bgImage && bgImage !== 'none') {
+                popupContent.style.backgroundImage = bgImage;
+                popupContent.style.backgroundSize = 'contain';
+                popupContent.style.backgroundPosition = 'center';
+                popupContent.style.backgroundRepeat = 'no-repeat';
+                popupContent.innerHTML = '';
+            } else {
+                // Hiçbiri yoksa placeholder göster
+                popupContent.style.backgroundImage = 'none';
+                popupContent.innerHTML = '<div class="popup-placeholder">🖼️</div>';
+            }
+        }
+        
+        // Counter'ı güncelle
+        imageCounter.textContent = `${currentImageIndex + 1} / ${galleryItems.length}`;
+    }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            updatePopupImage();
+            
+            // Geçiş animasyonu
+            popupContent.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                popupContent.style.transition = 'transform 0.3s ease';
+                popupContent.style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            updatePopupImage();
+            
+            // Geçiş animasyonu
+            popupContent.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                popupContent.style.transition = 'transform 0.3s ease';
+                popupContent.style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        // Event listeners
+        closeBtnPopup.addEventListener('click', closePopup);
+        nextBtn.addEventListener('click', showNextImage);
+        prevBtn.addEventListener('click', showPrevImage);
+
+        // Popup dışına tıklandığında kapat
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (popup.style.display === 'flex') {
+                if (e.key === 'Escape') closePopup();
+                if (e.key === 'ArrowRight') showNextImage();
+                if (e.key === 'ArrowLeft') showPrevImage();
+            }
+        });
+
+        // Hover efektleri
+        closeBtnPopup.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(205, 127, 50, 0.3)';
+            this.style.transform = 'rotate(90deg)';
+        });
+        closeBtnPopup.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(212, 175, 119, 0.2)';
+            this.style.transform = 'rotate(0deg)';
+        });
+
+        prevBtn.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(205, 127, 50, 0.3)';
+            this.style.transform = 'translateY(-50%) scale(1.1)';
+        });
+        prevBtn.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(212, 175, 119, 0.2)';
+            this.style.transform = 'translateY(-50%) scale(1)';
+        });
+
+        nextBtn.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(205, 127, 50, 0.3)';
+            this.style.transform = 'translateY(-50%) scale(1.1)';
+        });
+        nextBtn.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(212, 175, 119, 0.2)';
+            this.style.transform = 'translateY(-50%) scale(1)';
         });
     </script>
 </body>
