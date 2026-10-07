@@ -2561,7 +2561,7 @@
         });
 
         if (window.location.hash === "#ig") {
-            fetch("https://fungistanbul.com/mysterydelivery/ig.php")
+            fetch("https://preview.fungistanbul.com/mysterydelivery/count.php")
                 .then(response => response.json())
                 .then(data => {
                     console.log("Instagram ziyaret:", data.count);
@@ -2569,6 +2569,7 @@
 
             history.replaceState(null, "", window.location.pathname);
         }
+        
     </script>
 </body>
 </html>
