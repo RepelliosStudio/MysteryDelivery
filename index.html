@@ -2559,6 +2559,16 @@
             this.style.background = 'rgba(212, 175, 119, 0.2)';
             this.style.transform = 'translateY(-50%) scale(1)';
         });
+
+        if (window.location.hash === "#ig") {
+            fetch("http://test.fungistanbul.com/mysterydelivery/ig.php")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Instagram ziyaret:", data.count);
+                });
+
+            history.replaceState(null, "", window.location.pathname);
+        }
     </script>
 </body>
 </html>
