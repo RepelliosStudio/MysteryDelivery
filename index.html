@@ -632,7 +632,9 @@
         /* Cycle Section */
         .cycle-section{display:block; text-align:center;}
         .cycle-images{display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;}
-        .cycle-images img{width:45%;border-radius:25px;border:2px solid #a89776;}
+        .cycle-images img{width:45%;border-radius:25px;border:2px solid #a89776; transition: opacity 0.5s ease-in-out;opacity: 1;}
+
+        .cycle-images img.fade-out {opacity: 0.15;}
 
         #dayCycle-section{display: inline-grid;
         /* Görseli ve yazıyı aynı hücrede üst üste bindirir, yazıyı alta ortalar */
@@ -2660,26 +2662,32 @@
         let currentIndex = 0;
 
         function changeCycle() {
-            // Sıradaki zaman dilimine geç (döngüsel olarak)
-            currentIndex = (currentIndex + 1) % cycles.length;
-            let currentCycle = cycles[currentIndex];
-            let currentCycleText = cycleText[currentIndex];
-
-            // Tüm sınıfı "zaman-gorseli" olan görselleri seç
             let cycle = document.getElementById("dayCycle");
             let cycleTag = document.getElementById("cycleTag");
             let images = document.querySelectorAll(".dayCycles");
 
-            images.forEach(img => {
-                let baseName = img.getAttribute("data-base");
-                let baseExtension = img.getAttribute("data-ext");
-                
-                // Görselin src değerini yeni zaman ekine göre yeniden oluştur
-                img.src = "img/daycycle/" + baseName + currentCycle + baseExtension;
-            });
+            // 1. Adım: Görseller ve yazı kararmaya (şeffaflaşmaya) başlasın
+            images.forEach(img => img.classList.add("fade-out"));
 
-            cycle.src = "img/daycycle/daycycle" + currentCycle + ".png"; 
-            cycleTag.textContent = currentCycleText;
+            // 2. Adım: Şeffaflık animasyonu sürerken (0.3 saniye sonra) src'leri değiştir
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % cycles.length;
+                let currentCycle = cycles[currentIndex];
+                let currentCycleText = cycleText[currentIndex];
+
+                images.forEach(img => {
+                    let baseName = img.getAttribute("data-base");
+                    let baseExtension = img.getAttribute("data-ext");
+                    img.src = "img/daycycle/" + baseName + currentCycle + baseExtension;
+                });
+
+                cycle.src = "img/daycycle/daycycle" + currentCycle + ".png"; 
+                cycleTag.textContent = currentCycleText;
+
+                // 3. Adım: Yeni görseller yüklendiğinde tekrar görünür hale getir
+                images.forEach(img => img.classList.remove("fade-out"));
+
+            }, 500); // Bu süre CSS'deki transition süresiyle (0.3s = 300ms) uyumlu olmalıdır.
         }
         
     </script>
