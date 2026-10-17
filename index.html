@@ -629,6 +629,71 @@
             letter-spacing:1px;
         }
 
+        /* Cycle Section */
+        .cycle-section{display:block; text-align:center;}
+        .cycle-images{display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;}
+        .cycle-images img{width:45%;border-radius:25px;border:2px solid #a89776;}
+
+        #dayCycle-section{display: inline-grid;
+        /* Görseli ve yazıyı aynı hücrede üst üste bindirir, yazıyı alta ortalar */
+        place-items: end center;}
+
+        #cycleTag {
+            grid-area: 1 / 1; /* Üst üste bindirme kuralı */
+            margin-bottom: -66px; /* Kadranın alt kenarından bırakılacak boşluk */
+            margin-left:1px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            pointer-events: none; /* Yazıya tıklandığında butonun tıklanmasını engellemez */
+            text-align: center;
+        }
+
+        @keyframes ahsapParilti {
+            0% {
+                outline: 3px solid rgba(255, 180, 50, 0.8);
+                outline-offset: 3px;
+                box-shadow: 0 0 10px rgba(255, 180, 50, 0.5);
+            }
+            50% {
+                outline: 3px solid rgba(255, 180, 50, 0);
+                outline-offset: 8px;
+                box-shadow: 0 0 20px rgba(255, 180, 50, 0.9);
+            }
+            100% {
+                outline: 3px solid rgba(255, 180, 50, 0.8);
+                outline-offset: 3px;
+                box-shadow: 0 0 10px rgba(255, 180, 50, 0.5);
+            }
+        }
+
+        #dayCycleButton {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            /* Görselin yarım daire yapısına uyum sağlaması için (isteğe bağlı köşe yumuşatma) */
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            /* Yanıp sönen ışık efekti */
+            animation: ahsapParilti 1.8s infinite ease-in-out;
+            display: inline-block;
+            margin-bottom:25px;
+        }
+
+        #cycleText{color:white;margin-bottom:20px;}
+
+        #dayCycle {
+            display: block;
+            width: 100px; /* Buton görselinizin boyutuna göre ayarlayabilirsiniz */
+            height: auto;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .cycle-images img{width:100%}
+        }
+
         /* Story Choices */
         .story-section {
             display: grid;
@@ -1612,7 +1677,7 @@
                 <li><a href="#characters">Characters</a></li>
                 <li><a href="#combat">Combat</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#story">Story</a></li>
+                <li><a href="#cycle">Story</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <!--<li><a href="#patreon"><i class="fa-brands fa-patreon"></i> Patreon</a></li>-->
@@ -1843,6 +1908,26 @@
                 <h4 class="skill-name">LIGHTNING</h4>
                 <p class="skill-desc">Call down lightning to shock and stun.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Cycle Section -->
+    <section id="cycle">
+        <h2 class="section-title"><span>CYCLES</span></h2>
+        <div class="cycle-section">
+            <div id="dayCycle-section">
+            <button id="dayCycleButton" onclick="changeCycle()">
+                <img id="dayCycle" src="img/daycycle/daycycle_morning.png" alt="">
+            </button>
+            <span id="cycleTag">Morning</span>
+            </div>
+            <p id="cycleText">Click to rotate through the day-night cycle and preview changes.</p>
+            <div class="cycle-images">
+            <img class="dayCycles" data-base="cave" data-ext=".jpg" src="img/daycycle/cave_Morning.jpg" alt="cave">
+            <img class="dayCycles" data-base="forkroad" data-ext=".jpg" src="img/daycycle/forkroad_Morning.jpg" alt="forkroad">
+            <img class="dayCycles" data-base="shamanexterior" data-ext=".jpg" src="img/daycycle/shamanexterior_morning.jpg" alt="shamanexterior">
+            <img class="dayCycles" data-base="tavern2opengate_JustGuard" data-ext=".jpg" src="img/daycycle/tavern2opengate_JustGuard_Morning.jpg" alt="tavern2opengate_JustGuard">
+        </div>
         </div>
     </section>
 
@@ -2568,6 +2653,33 @@
                 });
 
             history.replaceState(null, "", window.location.pathname);
+        }
+
+        const cycles = ["_morning", "_afternoon", "_evening", "_night"];
+        const cycleText = ["Morning", "Afternoon", "Evening", "Night"];
+        let currentIndex = 0;
+
+        function changeCycle() {
+            // Sıradaki zaman dilimine geç (döngüsel olarak)
+            currentIndex = (currentIndex + 1) % cycles.length;
+            let currentCycle = cycles[currentIndex];
+            let currentCycleText = cycleText[currentIndex];
+
+            // Tüm sınıfı "zaman-gorseli" olan görselleri seç
+            let cycle = document.getElementById("dayCycle");
+            let cycleTag = document.getElementById("cycleTag");
+            let images = document.querySelectorAll(".dayCycles");
+
+            images.forEach(img => {
+                let baseName = img.getAttribute("data-base");
+                let baseExtension = img.getAttribute("data-ext");
+                
+                // Görselin src değerini yeni zaman ekine göre yeniden oluştur
+                img.src = "img/daycycle/" + baseName + currentCycle + baseExtension;
+            });
+
+            cycle.src = "img/daycycle/daycycle" + currentCycle + ".png"; 
+            cycleTag.textContent = currentCycleText;
         }
         
     </script>
